@@ -22,8 +22,4 @@ public class SnippetsRepository {
     public boolean hasSnippetWith(SnippetTitle snippetTitle) {
         return hashtable.containsKey(snippetTitle.toString());
     }
-
-    public boolean hasNotSnippetWith(SnippetTitle snippetTitle) {
-        return !hasSnippetWith(snippetTitle);
-    }
 }

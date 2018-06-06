@@ -71,12 +71,19 @@ public class VimSnipShould {
     @Test(expected = NoSuchElementException.class)
     public void
     not_allow_getting_a_nonexistent_snippet() {
-        given(snippetRepository.hasNotSnippetWith(new SnippetTitle("A'"))).willReturn(true);
+        given(snippetRepository.hasSnippetWith(new SnippetTitle("A'"))).willReturn(false);
 
         vimsnip.get("A'");
     }
 
-    @Test
+    /*
+    @Test(expected = NoSuchElementException.class)
+    public void
+    not_allow_retreive_newest_version_having_no_versions_at_all() {
+        given(snippetRepository.hasSnippetWith())
+    }*/
+
+    /*@Test
     public void
     provide_newest_snippet_version_if_it_is_not_specified() {
         given(snippetRepository.get(new SnippetTitle("A'"))).willReturn(new Snippet("A'"));
@@ -84,7 +91,7 @@ public class VimSnipShould {
 
         Snippet retrivedSnippet = vimsnip.get("A");
 
-        assertThat(retrivedSnippet,is(new Snippet("A ' ")));
-    }
+        assertThat(retrivedSnippet,is(new Snippet("A '' ")));
+    }*/
 }
 

@@ -12,7 +12,7 @@ public class VimSnip {
         if(title.isVersionZero()){
             return latestVersion(title);
         }
-        if(repository.hasNotSnippetWith(title)){
+        if(! repository.hasSnippetWith(title)){
             throw new NoSuchElementException();
         }
         return repository.get(new SnippetTitle(titleString));
@@ -20,9 +20,6 @@ public class VimSnip {
 
     private Snippet latestVersion(SnippetTitle title) {
         Snippet temp = new Snippet(title);
-        if(repository.hasNot(temp)){
-            throw new NoSuchElementException();
-        }
         return repository.get(title.updateVersion());
     }
 
