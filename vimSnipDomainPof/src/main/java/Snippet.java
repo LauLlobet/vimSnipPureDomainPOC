@@ -7,11 +7,20 @@ public class Snippet {
         this.body = body;
     }
 
+    public Snippet(SnippetTitle snippetTitle, String body) {
+        title = snippetTitle;
+        this.body = body;
+    }
+
     public String getBody() {
         return body;
     }
 
     public SnippetTitle getTitle(){
         return title;
+    }
+
+    public Snippet upgradeVersion() {
+        return new Snippet(title.updateVersion(),body);
     }
 }

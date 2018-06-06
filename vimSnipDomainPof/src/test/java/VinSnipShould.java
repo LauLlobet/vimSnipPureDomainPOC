@@ -6,7 +6,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,8 +28,8 @@ public class VinSnipShould {
     public void
     provide_stored_snippets() {
 
-        vimsnip.save("ONE Arbol Balance Casa ''", "ONE bla bla bla");
-        vimsnip.save("TWO Arbol Balance Casa ''", "TWO bla bla bla");
+        vimsnip.save("ONE Arbol Balance Casa", "ONE bla bla bla");
+        vimsnip.save("TWO Arbol Balance Casa", "TWO bla bla bla");
         Snippet retreivedSnippet1 = vimsnip.get("ONE Arbol Balance Casa");
         Snippet retreivedSnippet2 = vimsnip.get("TWO Arbol Casa Balance");
 
@@ -40,17 +42,12 @@ public class VinSnipShould {
 
     @Test
     public void
-    update_an_snippet_content_having_its_title_signature_and_changed() {
+    update_an_snippet_content_upgrading_its_version() {
         vimsnip = new VimSnip(snippetRepository);
+        given(snippetRepository.has(any())).willReturn(true);
 
-
-        vimsnip.save("keyword1 keyword2","a body");
         vimsnip.save("keyword1 keyword2","an updated body");
-       // Snippet secondVersionSnippet = vimsnip.get("keyword1 keyword2");
 
-        verify(snippetRepository).save(argThat(snippet -> snippet.getTitle().toString() == "keyword1 keyword2'"));
-
-        //assertThat(secondVersionSnippet.getTitle(),is("keyword1 keyword2'"));
-        //assertThat(secondVersionSnippet.getBody(), is("an updated body"));
+        verify(snippetRepository).save(argThat(snippet -> snippet.getTitle().toString().equals( "' keyword1 keyword2") ) );
     }
 }

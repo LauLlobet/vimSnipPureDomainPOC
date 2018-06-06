@@ -6,7 +6,8 @@ public class SnippetTitle {
     public SnippetTitle(String titleArguments) {
         String version = getVersion(titleArguments);
         String[] choppedWords = titleArguments.split("['| ]+");
-        keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);}};
+        keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);
+        remove("");}};
     }
 
     private String getVersion(String titleArguments) {
@@ -41,6 +42,6 @@ public class SnippetTitle {
     }
 
     public SnippetTitle updateVersion() {
-        return new SnippetTitle(this.toString() + " newVersion");
+        return new SnippetTitle(this.toString() + " '");
     }
 }

@@ -11,7 +11,7 @@ public class SnippetsRepository {
         hashtable.put(snippet.getTitle(),snippet);
     }
 
-    public boolean has(String title) {
+    public boolean has(SnippetTitle title) {
         return hashtable.containsKey(title);
     }
 }

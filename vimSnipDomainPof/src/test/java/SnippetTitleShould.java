@@ -9,13 +9,13 @@ public class SnippetTitleShould {
     @Test
     public void
     be_equal_to_another_title_that_has_the_same_keywords() {
-       assertEquals(new SnippetTitle("Arbol    Balance ''Casa"),new SnippetTitle("Casa Balance Arbol"));
+       assertEquals(new SnippetTitle("Arbol    Balance Casa"),new SnippetTitle("Casa Balance Arbol"));
     }
 
     @Test
     public void
     be_serializable() {
-       assertThat("Arbol Balance Casa",is(new SnippetTitle("Balance Arbol    Casa").toString()));
+       assertEquals(new SnippetTitle("Balance Arbol    Casa").toString(), "Arbol Balance Casa");
     }
 
     @Test
