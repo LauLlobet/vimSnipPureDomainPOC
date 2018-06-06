@@ -9,6 +9,15 @@ public class SnippetTitle {
 
     }
 
+
+    @Override
+    public String toString(){
+        ArrayList<String> keywordsArray = new ArrayList<>(keywords);
+        Collections.sort(keywordsArray);
+        String stringifiedTitle = keywordsArray.stream().reduce("", (x, y)-> x+y+" ");
+        return stringifiedTitle.substring(0, stringifiedTitle.length()-1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

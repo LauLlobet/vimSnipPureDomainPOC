@@ -1,9 +1,9 @@
 public class Snippet {
-    private final String title;
+    private final SnippetTitle title;
     private final String body;
 
     public Snippet(String title, String body) {
-        this.title = title;
+        this.title = new SnippetTitle(title);
         this.body = body;
     }
 
@@ -11,7 +11,7 @@ public class Snippet {
         return body;
     }
 
-    public String getTitle(){
+    public SnippetTitle getTitle(){
         return title;
     }
 }
