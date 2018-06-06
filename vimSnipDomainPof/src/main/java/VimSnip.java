@@ -12,31 +12,43 @@ public class VimSnip {
         if(title.isVersionZero()){
             return latestVersion(title);
         }
-        if(! repository.hasSnippetWith(title)){
-            throw new NoSuchElementException();
-        }
-        return repository.get(new SnippetTitle(titleString));
+        return getOrElseThrowSnippetWithTitle(title);
     }
 
-    private Snippet latestVersion(SnippetTitle zeroVersionTitle) {
-        SnippetTitle title = zeroVersionTitle;
-        do {
-            title = title.upgradeVersion();
-        } while (repository.hasSnippetWith(title));
-        title = title.downgradedVersion();
-        if(title.isVersionZero()){
+    private Snippet getOrElseThrowSnippetWithTitle(SnippetTitle title) {
+        if(!repository.hasSnippetWith(title)){
             throw new NoSuchElementException();
         }
         return repository.get(title);
     }
 
+    private Snippet latestVersion(SnippetTitle zeroVersionTitle) {
+        SnippetTitle title = getMostRecentTitleStartingFrom(zeroVersionTitle);
+        throwIfIsZeroVersion(title);
+        return repository.get(title);
+    }
+
+    private void throwIfIsZeroVersion(SnippetTitle title) {
+        if(title.isVersionZero()){
+            throw new NoSuchElementException();
+        }
+    }
+
+    private SnippetTitle getMostRecentTitleStartingFrom(SnippetTitle title) {
+        do {
+            title = title.upgradeVersion();
+        } while (repository.hasSnippetWith(title));
+        title = title.downgradedVersion();
+        return title;
+    }
+
     public void save(String title, String body) {
         Snippet snippet = new Snippet(title,body);
-        checkVersion(snippet);
+        checkIsCorrectVersion(snippet);
         repository.save(snippet);
     }
 
-    private void checkVersion(Snippet snippet) {
+    private void checkIsCorrectVersion(Snippet snippet) {
         if( repository.has(snippet) || snippet.isNotAZeroVersion() && ! repository.has(snippet.downgradeVersion())){
             throw new NotCorrectVersionOfSnippetToSave();
         }
