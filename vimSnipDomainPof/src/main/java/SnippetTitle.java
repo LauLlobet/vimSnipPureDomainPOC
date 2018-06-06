@@ -5,29 +5,30 @@ public class SnippetTitle {
     private final String title;
     private String BY_SPACE_OR_APOSTROPHE = "['| ]+";
 
-    SnippetTitle(String titleArgument) {
-        Set<String> keywords = createKeywordsSetWithVersionFrom(titleArgument);
-        title = keywordSetToString(keywords);
+    SnippetTitle(String titleString) {
+        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(titleString, getVersionNum(titleString));
+        title = keywordSetToString(keywordsSet);
     }
 
-    private Set<String> createKeywordsSetWithVersionFrom(String titleArguments) {
+    private Set<String> createKeywordsSetWithVersionFrom(String titleArguments, int versionNum) {
         HashSet<String> set = new HashSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
-        set.add(getVersion(titleArguments));
+        set.add(getVersion(titleArguments, versionNum));
         set.remove("");
         return set;
     }
 
-    private boolean isNotVersionZero(String titleArguments) {
-        return titleArguments.contains("'");
-    }
 
-    private String getVersion(String titleArguments) {
-        int versionNum = titleArguments.replaceAll("[^']", "").length();
+
+    private String getVersion(String titleArguments, int versionNum) {
         String ans = "";
         for(int i=0; i < versionNum; i++ ){
             ans += "'";
         }
         return ans;
+    }
+
+    private int getVersionNum(String titleArguments) {
+        return titleArguments.replaceAll("[^']", "").length();
     }
 
     public SnippetTitle updateVersion() {
@@ -58,5 +59,16 @@ public class SnippetTitle {
     public int hashCode() {
 
         return Objects.hash(title);
+    }
+
+
+    public boolean isVersionZero() {
+        return ! title.contains("'");
+    }
+
+    public SnippetTitle downgradedVersionTitle() {
+        int lowerVersion = getVersionNum(title) - 1;
+        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(title, lowerVersion);
+        return new SnippetTitle(keywordSetToString(keywordsSet));
     }
 }

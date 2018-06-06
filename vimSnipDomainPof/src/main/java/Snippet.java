@@ -12,7 +12,20 @@ public class Snippet {
         this.body = body;
     }
 
-    public String getBody() {
+    public Snippet(SnippetTitle snippetTitle) {
+        title = snippetTitle;
+        body = null;
+    }
+
+    public Snippet(String title){
+        this(new SnippetTitle(title));
+    }
+
+    public String getBody()
+    {
+        if(body == null){
+            throw new DowngradedVersionSnippetUsedAsARegularSnippet();
+        }
         return body;
     }
 
@@ -26,5 +39,13 @@ public class Snippet {
 
     public Snippet upgradeVersion() {
         return new Snippet(title.updateVersion(),body);
+    }
+
+    public boolean isVersionZero() {
+        return title.isVersionZero();
+    }
+
+    public Snippet downgradeVersion() {
+        return new Snippet(title.downgradedVersionTitle());
     }
 }
