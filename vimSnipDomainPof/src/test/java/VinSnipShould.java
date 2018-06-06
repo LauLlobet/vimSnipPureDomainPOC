@@ -34,9 +34,9 @@ public class VinSnipShould {
         Snippet retreivedSnippet2 = vimsnip.get("TWO Arbol Casa Balance");
 
 
-        assertThat(retreivedSnippet1.getTitle().toString(),is("Arbol Balance Casa ONE"));
+        assertThat(retreivedSnippet1.getTitleString(),is("Arbol Balance Casa ONE"));
         assertThat(retreivedSnippet1.getBody(),is("ONE bla bla bla"));
-        assertThat(retreivedSnippet2.getTitle().toString(),is("Arbol Balance Casa TWO"));
+        assertThat(retreivedSnippet2.getTitleString(),is("Arbol Balance Casa TWO"));
         assertThat(retreivedSnippet2.getBody(),is("TWO bla bla bla"));
     }
 
@@ -48,6 +48,6 @@ public class VinSnipShould {
 
         vimsnip.save("keyword1 keyword2","an updated body");
 
-        verify(snippetRepository).save(argThat(snippet -> snippet.getTitle().toString().equals( "' keyword1 keyword2") ) );
+        verify(snippetRepository).save(argThat(snippet -> snippet.getTitleString().equals( "' keyword1 keyword2") ) );
     }
 }

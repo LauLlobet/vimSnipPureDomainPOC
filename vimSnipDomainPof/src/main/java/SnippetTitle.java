@@ -1,13 +1,14 @@
 import java.util.*;
 
 public class SnippetTitle {
-    final Set<String> keywords;
+    final String title;
 
     public SnippetTitle(String titleArguments) {
         String version = getVersion(titleArguments);
         String[] choppedWords = titleArguments.split("['| ]+");
-        keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);
+        Set<String> keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);
         remove("");}};
+        title = keywordSetToString(keywords);
     }
 
     private String getVersion(String titleArguments) {
@@ -19,9 +20,16 @@ public class SnippetTitle {
         return ans;
     }
 
-
     @Override
     public String toString() {
+        return title;
+    }
+
+    public SnippetTitle updateVersion() {
+        return new SnippetTitle(this.toString() + " '");
+    }
+
+    private String keywordSetToString(Set<String> keywords) {
         ArrayList<String> keywordsArray = new ArrayList<>(keywords);
         Collections.sort(keywordsArray);
         String stringifiedTitle = keywordsArray.stream().reduce("", (x, y) -> x + y + " ");
@@ -33,15 +41,12 @@ public class SnippetTitle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SnippetTitle that = (SnippetTitle) o;
-        return Objects.equals(keywords, that.keywords);
+        return Objects.equals(title, that.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(keywords);
-    }
 
-    public SnippetTitle updateVersion() {
-        return new SnippetTitle(this.toString() + " '");
+        return Objects.hash(title);
     }
 }

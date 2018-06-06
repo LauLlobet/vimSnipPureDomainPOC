@@ -20,6 +20,10 @@ public class Snippet {
         return title;
     }
 
+    public String getTitleString(){
+        return title.toString();
+    }
+
     public Snippet upgradeVersion() {
         return new Snippet(title.updateVersion(),body);
     }

@@ -1,5 +1,5 @@
 public class VimSnip {
-    private SnippetsRepository snippets = new SnippetsRepository();
+    private SnippetsRepository snippets;
 
     public VimSnip(SnippetsRepository snippetsRepository) {
         this.snippets = snippetsRepository;
@@ -10,12 +10,14 @@ public class VimSnip {
     }
 
     public void save(String title, String body) {
+        Snippet snippet = (new Snippet(title,body));
         if(snippets.has(new SnippetTitle(title))){
-            Snippet temp = (new Snippet(title,body)).upgradeVersion();
-            snippets.save(temp);
+            snippets.save(snippet.upgradeVersion());
             return;
         }
-        snippets.save(new Snippet(title,body));
+        snippets.save(snippet);
     }
+
+
 
 }
