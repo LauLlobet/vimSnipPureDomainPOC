@@ -29,4 +29,10 @@ public class SnippetTitleShould {
     obtain_version_from_creation_string_apostrophes() {
        assertThat(new SnippetTitle("A C'' B").toString(),is("'' A B C"));
     }
+
+    @Test
+    public void
+    be_updatable() {
+       assertThat(new SnippetTitle(" A B ' ").updateVersion().toString(),is("'' A B"));
+    }
 }

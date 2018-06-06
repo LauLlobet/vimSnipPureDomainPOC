@@ -12,9 +12,8 @@ public class SnippetTitle {
 
     private Set<String> createKeywordsSetWithVersionFrom(String titleArguments) {
         HashSet<String> set = new HashSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
-        if(isNotVersionZero(titleArguments)) {
-            set.add(getVersion(titleArguments));
-        }
+        set.add(getVersion(titleArguments));
+        set.remove("");
         return set;
     }
 

@@ -47,7 +47,9 @@ public class VinSnipShould {
         given(snippetRepository.has(any())).willReturn(true);
 
         vimsnip.save("keyword1 keyword2","an updated body");
-
         verify(snippetRepository).save(argThat(snippet -> snippet.getTitleString().equals( "' keyword1 keyword2") ) );
+
+        vimsnip.save("keyword3 keyword4'","a second updated body");
+        verify(snippetRepository).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
     }
 }
