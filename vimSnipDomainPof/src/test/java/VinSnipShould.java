@@ -45,7 +45,8 @@ public class VinSnipShould {
     @Test
     public void
     save_a_snippet_having_its_version_as_the_latest() {
-        given(snippetRepository.has(argThat(snippet -> snippet.toString().equals("' keyword3 keyword4")))).willReturn(true);
+        given(snippetRepository.has(new Snippet("' keyword3 keyword4"))).willReturn(true);
+        given(snippetRepository.has(new Snippet("keyword3 keyword4 '' "))).willReturn(false);
 
         vimsnip.save("keyword3 keyword4''","a second updated body");
         verify(snippetRepository).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
@@ -54,20 +55,21 @@ public class VinSnipShould {
     @Test
     public void
     save_a_first_version_snippet_which_has_not_been_stored_before() {
-        given(snippetRepository.has(argThat(snippet -> snippet.toString().equals("' A")))).willReturn(false);
+        given(snippetRepository.has(new Snippet("A"))).willReturn(true);
+        given(snippetRepository.has(new Snippet("' A"))).willReturn(false);
 
         vimsnip.save("A '","body");
 
         verify(snippetRepository).save(argThat((snippet) -> { assertThat(snippet.getTitleString(),is("' A")); return true; }));
     }
 
-    @Test
+    @Test(expected=NotCorrectVersionOfSnippetToSave.class)
     public void
-    dont_save_a_snippet_having_its_version_as_not_beeing_the_lastest() {
-        given(snippetRepository.has(new Snippet("' keyword1 keyword2"))).willReturn(false);
-        given(snippetRepository.has(new Snippet("keyword1 keyword2"))).willReturn(true);
+    dont_save_a_snippet_having_its_version_ahead_of_the_lastest() {
+        given(snippetRepository.has(new Snippet("keyword1 keyword2 '' "))).willReturn(false);
+        given(snippetRepository.has(new Snippet("keyword1 keyword2 ' "))).willReturn(false);
 
-        vimsnip.save("keyword3 keyword4''","a second updated body");
+        vimsnip.save("keyword1 keyword2'' ","a second updated body");
 
         verify(snippetRepository,never()).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
     }

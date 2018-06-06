@@ -1,22 +1,23 @@
 public class VimSnip {
-    private SnippetsRepository snippets;
+    private SnippetsRepository repository;
 
-    public VimSnip(SnippetsRepository snippetsRepository) {
-        this.snippets = snippetsRepository;
+    VimSnip(SnippetsRepository snippetsRepository) {
+        this.repository = snippetsRepository;
     }
 
     public Snippet get(String title) {
-        return snippets.get(new SnippetTitle(title));
+        return repository.get(new SnippetTitle(title));
     }
 
     public void save(String title, String body) {
         Snippet snippet = new Snippet(title,body);
-        if(isAFirstVersionAndNeverSavedBefore(snippet) || snippets.hasNot(snippet) && snippets.has(snippet.downgradeVersion())){
-            snippets.save(snippet);
-        }
+        checkVersion(snippet);
+        repository.save(snippet);
     }
 
-    private boolean isAFirstVersionAndNeverSavedBefore(Snippet snippet) {
-        return snippet.isVersionZero() && snippets.hasNot(snippet);
+    private void checkVersion(Snippet snippet) {
+        if( repository.has(snippet) || snippet.isNotAZeroVersion() && ! repository.has(snippet.downgradeVersion())){
+            throw new NotCorrectVersionOfSnippetToSave();
+        }
     }
 }

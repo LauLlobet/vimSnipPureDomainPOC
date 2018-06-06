@@ -6,20 +6,34 @@ public class SnippetTitle {
     private String BY_SPACE_OR_APOSTROPHE = "['| ]+";
 
     SnippetTitle(String titleString) {
-        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(titleString, getVersionNum(titleString));
+        SortedSet<String> keywordsSet = createKeywordsSetWithVersionFrom(titleString, getVersionNum(titleString));
         title = keywordSetToString(keywordsSet);
     }
 
-    private Set<String> createKeywordsSetWithVersionFrom(String titleArguments, int versionNum) {
-        HashSet<String> set = new HashSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
-        set.add(getVersion(titleArguments, versionNum));
+    private SortedSet<String> createKeywordsSetWithVersionFrom(String titleArguments, int versionNum) {
+        SortedSet<String> set = new TreeSet<>();
+        set.addAll(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
+        set.add(createVersionKeyword(versionNum));
         set.remove("");
         return set;
     }
 
+    private String keywordSetToString(Set<String> keywords) {
+        String stringifiedTitle = new ArrayList<>(keywords).stream().reduce("", (x, y) -> x + y + " ");
+        return stringifiedTitle.substring(0, stringifiedTitle.length() - 1);
+    }
 
+    public boolean isVersionZero() {
+        return ! title.contains("'");
+    }
 
-    private String getVersion(String titleArguments, int versionNum) {
+    public SnippetTitle downgradedVersionTitle() {
+        int lowerVersion = getVersionNum(title) - 1;
+        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(title, lowerVersion);
+        return new SnippetTitle(keywordSetToString(keywordsSet));
+    }
+
+    private String createVersionKeyword(int versionNum) {
         String ans = "";
         for(int i=0; i < versionNum; i++ ){
             ans += "'";
@@ -33,13 +47,6 @@ public class SnippetTitle {
 
     public SnippetTitle updateVersion() {
         return new SnippetTitle(this.toString() + " '");
-    }
-
-    private String keywordSetToString(Set<String> keywords) {
-        ArrayList<String> keywordsArray = new ArrayList<>(keywords);
-        Collections.sort(keywordsArray);
-        String stringifiedTitle = keywordsArray.stream().reduce("", (x, y) -> x + y + " ");
-        return stringifiedTitle.substring(0, stringifiedTitle.length() - 1);
     }
 
     @Override
@@ -62,13 +69,4 @@ public class SnippetTitle {
     }
 
 
-    public boolean isVersionZero() {
-        return ! title.contains("'");
-    }
-
-    public SnippetTitle downgradedVersionTitle() {
-        int lowerVersion = getVersionNum(title) - 1;
-        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(title, lowerVersion);
-        return new SnippetTitle(keywordSetToString(keywordsSet));
-    }
 }

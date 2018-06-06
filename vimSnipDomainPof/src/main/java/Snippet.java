@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Snippet {
     private final SnippetTitle title;
     private final String body;
@@ -47,5 +49,23 @@ public class Snippet {
 
     public Snippet downgradeVersion() {
         return new Snippet(title.downgradedVersionTitle());
+    }
+
+    public boolean isNotAZeroVersion() {
+        return !isVersionZero();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Snippet snippet = (Snippet) o;
+        return Objects.equals(title, snippet.title);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(title);
     }
 }
