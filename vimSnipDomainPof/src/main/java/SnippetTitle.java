@@ -1,14 +1,25 @@
 import java.util.*;
 
 public class SnippetTitle {
-    final String title;
+    private static final String ZERO_VERSION = "";
+    private final String title;
+    private String BY_SPACE_OR_APOSTROPHE = "['| ]+";
 
-    public SnippetTitle(String titleArguments) {
-        String version = getVersion(titleArguments);
-        String[] choppedWords = titleArguments.split("['| ]+");
-        Set<String> keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);
-        remove("");}};
+    SnippetTitle(String titleArgument) {
+        Set<String> keywords = createKeywordsSetWithVersionFrom(titleArgument);
         title = keywordSetToString(keywords);
+    }
+
+    private Set<String> createKeywordsSetWithVersionFrom(String titleArguments) {
+        HashSet<String> set = new HashSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
+        if(isNotVersionZero(titleArguments)) {
+            set.add(getVersion(titleArguments));
+        }
+        return set;
+    }
+
+    private boolean isNotVersionZero(String titleArguments) {
+        return titleArguments.contains("'");
     }
 
     private String getVersion(String titleArguments) {
@@ -20,11 +31,6 @@ public class SnippetTitle {
         return ans;
     }
 
-    @Override
-    public String toString() {
-        return title;
-    }
-
     public SnippetTitle updateVersion() {
         return new SnippetTitle(this.toString() + " '");
     }
@@ -34,6 +40,11 @@ public class SnippetTitle {
         Collections.sort(keywordsArray);
         String stringifiedTitle = keywordsArray.stream().reduce("", (x, y) -> x + y + " ");
         return stringifiedTitle.substring(0, stringifiedTitle.length() - 1);
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 
     @Override

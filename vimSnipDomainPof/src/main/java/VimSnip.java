@@ -10,14 +10,11 @@ public class VimSnip {
     }
 
     public void save(String title, String body) {
-        Snippet snippet = (new Snippet(title,body));
-        if(snippets.has(new SnippetTitle(title))){
+        Snippet snippet = new Snippet(title,body);
+        if(snippets.has(snippet.getTitle())){
             snippets.save(snippet.upgradeVersion());
             return;
         }
         snippets.save(snippet);
     }
-
-
-
 }
