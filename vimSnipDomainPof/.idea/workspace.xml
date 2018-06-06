@@ -15,27 +15,40 @@
       <file leaf-file-name="VimSnip.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/VimSnip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+            <state relative-caret-position="165">
+              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
               <folding>
-                <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#189#190#0" expanded="true" />
-                <element signature="e#447#448#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#150#151#0" expanded="true" />
+                <element signature="e#200#201#0" expanded="true" />
+                <element signature="e#240#241#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VinSnipShould.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VinSnipShould.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/VinSnipShould.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="28" column="61" lean-forward="false" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
+            <state relative-caret-position="433">
+              <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
               <folding>
-                <element signature="e#286#287#0" expanded="true" />
-                <element signature="e#326#327#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#536#537#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,15 +66,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnippetTitleShould.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SnippetTitleShould.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/SnippetTitleShould.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="76" lean-forward="false" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+            <state relative-caret-position="435">
+              <caret line="29" column="64" lean-forward="false" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#448#449#0" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +85,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
               <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1521561991000" expanded="false" signature="0:104" ph="/.../" />
+                <marker date="1521561991000" expanded="true" signature="277:284" ph="{}" />
+                <marker date="1521561991000" expanded="true" signature="327:499" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,11 +97,13 @@
       <file leaf-file-name="SnippetTitle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/SnippetTitle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
               <folding>
-                <element signature="e#892#893#0" expanded="true" />
-                <element signature="e#937#938#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1272#1273#0" expanded="true" />
+                <element signature="e#1315#1316#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,8 +125,8 @@
       <file leaf-file-name="SnippetsRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/SnippetsRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+            <state relative-caret-position="135">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
               <folding>
                 <element signature="e#133#156#0" expanded="true" />
                 <element signature="e#204#205#0" expanded="true" />
@@ -150,12 +169,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/test/java/SnippetShould.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SnippetTitle.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SnippetTitleShould.java" />
         <option value="$PROJECT_DIR$/src/main/java/Snippet.java" />
         <option value="$PROJECT_DIR$/src/main/java/SnippetsRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/VimSnip.java" />
         <option value="$PROJECT_DIR$/src/test/java/VinSnipShould.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SnippetTitle.java" />
+        <option value="$PROJECT_DIR$/src/test/java/SnippetTitleShould.java" />
       </list>
     </option>
   </component>
@@ -256,7 +275,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.VinSnipShould.provide_stored_snippets">
+  <component name="RunManager" selected="JUnit.SnippetTitleShould.obtain_version_from_creation_string_apostrophes">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -277,14 +296,14 @@
       <module name="" />
       <envs />
     </configuration>
-    <configuration name="SnippetTitleShould.be_equal_to_another_title_that_has_the_same_keywords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SnippetTitleShould.distinct_same_title_with_different_versions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="vimSnipDomainPof" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SnippetTitleShould" />
-      <option name="METHOD_NAME" value="be_equal_to_another_title_that_has_the_same_keywords" />
+      <option name="METHOD_NAME" value="distinct_same_title_with_different_versions" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -297,14 +316,34 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="SnippetTitleShould.be_serializable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SnippetTitleShould.obtain_version_from_creation_string_apostrophes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="vimSnipDomainPof" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SnippetTitleShould" />
-      <option name="METHOD_NAME" value="be_serializable" />
+      <option name="METHOD_NAME" value="obtain_version_from_creation_string_apostrophes" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="SnippetTitleShould.serialize_versions_with_the_apostrophe_notation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="vimSnipDomainPof" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SnippetTitleShould" />
+      <option name="METHOD_NAME" value="serialize_versions_with_the_apostrophe_notation" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -345,26 +384,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VinSnipShould" />
       <option name="METHOD_NAME" value="provide_stored_snippets" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="VinSnipShould.update_an_snippet_changeing_its_title_signature_and_content" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="vimSnipDomainPof" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VinSnipShould" />
-      <option name="METHOD_NAME" value="update_an_snippet_changeing_its_title_signature_and_content" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -439,18 +458,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.VinSnipShould.provide_stored_snippets" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.be_equal_to_another_title_that_has_the_same_keywords" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.VinSnipShould.update_an_snippet_changeing_its_title_signature_and_content" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.VinSnipShould" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.be_serializable" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.VinSnipShould" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.distinct_same_title_with_different_versions" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.serialize_versions_with_the_apostrophe_notation" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.obtain_version_from_creation_string_apostrophes" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.VinSnipShould.provide_stored_snippets" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.be_serializable" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.VinSnipShould" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.VinSnipShould.update_an_snippet_changeing_its_title_signature_and_content" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.be_equal_to_another_title_that_has_the_same_keywords" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.obtain_version_from_creation_string_apostrophes" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.serialize_versions_with_the_apostrophe_notation" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.SnippetTitleShould.distinct_same_title_with_different_versions" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.VinSnipShould" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.VinSnipShould.provide_stored_snippets" />
       </list>
     </recent_temporary>
   </component>
@@ -476,39 +495,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SnippetTitleShould_be_serializable - 2018.06.06 at 11h 46m 55s.xml">
-      <configuration name="SnippetTitleShould.be_serializable" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_distinct_same_title_with_different_versions - 2018.06.06 at 12h 23m 38s.xml">
+      <configuration name="SnippetTitleShould.distinct_same_title_with_different_versions" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 47m 27s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_obtain_version_from_creation_string_apostrophes - 2018.06.06 at 12h 28m 36s.xml">
+      <configuration name="SnippetTitleShould.obtain_version_from_creation_string_apostrophes" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 49m 45s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_obtain_version_from_creation_string_apostrophes - 2018.06.06 at 12h 36m 42s.xml">
+      <configuration name="SnippetTitleShould.obtain_version_from_creation_string_apostrophes" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 51m 20s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_obtain_version_from_creation_string_apostrophes - 2018.06.06 at 12h 37m 17s.xml">
+      <configuration name="SnippetTitleShould.obtain_version_from_creation_string_apostrophes" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 51m 43s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_serialize_versions_with_the_apostrophe_notation - 2018.06.06 at 12h 25m 25s.xml">
+      <configuration name="SnippetTitleShould.serialize_versions_with_the_apostrophe_notation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 53m 09s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="SnippetTitleShould_serialize_versions_with_the_apostrophe_notation - 2018.06.06 at 12h 26m 14s.xml">
+      <configuration name="SnippetTitleShould.serialize_versions_with_the_apostrophe_notation" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 53m 10s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="VinSnipShould - 2018.06.06 at 11h 57m 47s.xml">
+      <configuration name="VinSnipShould" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 53m 57s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="VinSnipShould - 2018.06.06 at 11h 58m 21s.xml">
+      <configuration name="VinSnipShould" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 54m 15s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="VinSnipShould - 2018.06.06 at 11h 58m 37s.xml">
+      <configuration name="VinSnipShould" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VinSnipShould_provide_stored_snippets - 2018.06.06 at 11h 54m 37s.xml">
-      <configuration name="VinSnipShould.provide_stored_snippets" configurationId="JUnit" />
+    <history-entry file="VinSnipShould - 2018.06.06 at 11h 58m 58s.xml">
+      <configuration name="VinSnipShould" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1760" y="-1152" width="2048" height="1152" extended-state="0" />
+    <frame x="-1660" y="-1152" width="2048" height="1152" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -547,7 +566,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/VinSnipShould.java</url>
-          <line>23</line>
+          <line>31</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -573,10 +592,12 @@
         <state relative-caret-position="210">
           <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
-            <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -587,8 +608,8 @@
           <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -598,8 +619,10 @@
         <state relative-caret-position="90">
           <caret line="6" column="60" lean-forward="false" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
           <folding>
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1315#1316#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -625,8 +648,9 @@
         <state relative-caret-position="300">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -650,34 +674,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SnippetTitleShould.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="76" lean-forward="false" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1521561991000" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1521561991000" expanded="true" signature="277:284" ph="{}" />
+            <marker date="1521561991000" expanded="true" signature="327:499" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SnippetTitle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SnippetsRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding>
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#133#156#0" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VimSnip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -692,42 +736,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VimSnip.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SnippetTitle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
           <folding>
-            <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SnippetsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-          <folding>
-            <element signature="e#133#156#0" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#345#346#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1315#1316#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/VinSnipShould.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="61" lean-forward="false" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
+        <state relative-caret-position="433">
+          <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
           <folding>
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SnippetTitleShould.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="64" lean-forward="false" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
           </folding>
         </state>
       </provider>

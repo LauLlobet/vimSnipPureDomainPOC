@@ -1,6 +1,10 @@
 public class VimSnip {
     private SnippetsRepository snippets = new SnippetsRepository();
 
+    public VimSnip(SnippetsRepository snippetsRepository) {
+        this.snippets = snippetsRepository;
+    }
+
     public Snippet get(String title) {
         return snippets.get(new SnippetTitle(title));
     }

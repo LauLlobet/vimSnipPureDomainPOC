@@ -4,18 +4,27 @@ public class SnippetTitle {
     final Set<String> keywords;
 
     public SnippetTitle(String titleArguments) {
+        String version = getVersion(titleArguments);
         String[] choppedWords = titleArguments.split("['| ]+");
-        keywords = new HashSet(Arrays.asList(choppedWords));
+        keywords = new HashSet(Arrays.asList(choppedWords)){{add(version);}};
+    }
 
+    private String getVersion(String titleArguments) {
+        int versionNum = titleArguments.replaceAll("[^']", "").length();
+        String ans = "";
+        for(int i=0; i < versionNum; i++ ){
+            ans += "'";
+        }
+        return ans;
     }
 
 
     @Override
-    public String toString(){
+    public String toString() {
         ArrayList<String> keywordsArray = new ArrayList<>(keywords);
         Collections.sort(keywordsArray);
-        String stringifiedTitle = keywordsArray.stream().reduce("", (x, y)-> x+y+" ");
-        return stringifiedTitle.substring(0, stringifiedTitle.length()-1);
+        String stringifiedTitle = keywordsArray.stream().reduce("", (x, y) -> x + y + " ");
+        return stringifiedTitle.substring(0, stringifiedTitle.length() - 1);
     }
 
     @Override
@@ -29,5 +38,9 @@ public class SnippetTitle {
     @Override
     public int hashCode() {
         return Objects.hash(keywords);
+    }
+
+    public SnippetTitle updateVersion() {
+        return new SnippetTitle(this.toString() + " newVersion");
     }
 }
