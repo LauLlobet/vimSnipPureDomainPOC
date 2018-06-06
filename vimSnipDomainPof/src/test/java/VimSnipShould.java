@@ -4,16 +4,17 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class VinSnipShould {
+public class VimSnipShould {
 
     private VimSnip vimsnip;
 
@@ -23,23 +24,6 @@ public class VinSnipShould {
     @Before
     public void setUp() {
         vimsnip = new VimSnip(snippetRepository);
-    }
-
-    @Test
-    public void
-    provide_stored_snippets() {
-        vimsnip =  new VimSnip(new SnippetsRepository());
-
-        vimsnip.save("ONE Arbol Balance Casa", "ONE bla bla bla");
-        vimsnip.save("TWO Arbol Balance Casa", "TWO bla bla bla");
-        Snippet retreivedSnippet1 = vimsnip.get("ONE Arbol Balance Casa");
-        Snippet retreivedSnippet2 = vimsnip.get("TWO Arbol Casa Balance");
-
-
-        assertThat(retreivedSnippet1.getTitleString(),is("Arbol Balance Casa ONE"));
-        assertThat(retreivedSnippet1.getBody(),is("ONE bla bla bla"));
-        assertThat(retreivedSnippet2.getTitleString(),is("Arbol Balance Casa TWO"));
-        assertThat(retreivedSnippet2.getBody(),is("TWO bla bla bla"));
     }
 
     @Test
@@ -73,4 +57,34 @@ public class VinSnipShould {
 
         verify(snippetRepository,never()).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
     }
+
+    @Test(expected=NotCorrectVersionOfSnippetToSave.class)
+    public void
+    dont_save_a_snippet_that_already_exists() {
+        given(snippetRepository.has(new Snippet("keyword1 keyword2 '' "))).willReturn(true);
+
+        vimsnip.save("keyword1 keyword2'' ","a second updated body");
+
+        verify(snippetRepository,never()).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void
+    not_allow_getting_a_nonexistent_snippet() {
+        given(snippetRepository.hasNotSnippetWith(new SnippetTitle("A'"))).willReturn(true);
+
+        vimsnip.get("A'");
+    }
+
+    @Test
+    public void
+    provide_newest_snippet_version_if_it_is_not_specified() {
+        given(snippetRepository.get(new SnippetTitle("A'"))).willReturn(new Snippet("A'"));
+        given(snippetRepository.get(new SnippetTitle("A''"))).willReturn(new Snippet("A''"));
+
+        Snippet retrivedSnippet = vimsnip.get("A");
+
+        assertThat(retrivedSnippet,is(new Snippet("A ' ")));
+    }
 }
+

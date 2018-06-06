@@ -12,14 +12,18 @@ public class SnippetsRepository {
     }
 
     public boolean has(Snippet snippet) {
-        return has(snippet.getTitle());
+        return hasSnippetWith(snippet.getTitle());
     }
 
     public boolean hasNot(Snippet snippet) {
         return !has(snippet);
     }
 
-    private boolean has(SnippetTitle snippetTitle) {
+    public boolean hasSnippetWith(SnippetTitle snippetTitle) {
         return hashtable.containsKey(snippetTitle.toString());
+    }
+
+    public boolean hasNotSnippetWith(SnippetTitle snippetTitle) {
+        return !hasSnippetWith(snippetTitle);
     }
 }
