@@ -18,9 +18,16 @@ public class VimSnip {
         return repository.get(new SnippetTitle(titleString));
     }
 
-    private Snippet latestVersion(SnippetTitle title) {
-        Snippet temp = new Snippet(title);
-        return repository.get(title.updateVersion());
+    private Snippet latestVersion(SnippetTitle zeroVersionTitle) {
+        SnippetTitle title = zeroVersionTitle;
+        do {
+            title = title.upgradeVersion();
+        } while (repository.hasSnippetWith(title));
+        title = title.downgradedVersion();
+        if(title.isVersionZero()){
+            throw new NoSuchElementException();
+        }
+        return repository.get(title);
     }
 
     public void save(String title, String body) {

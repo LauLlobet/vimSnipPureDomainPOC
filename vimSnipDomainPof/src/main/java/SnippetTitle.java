@@ -27,7 +27,7 @@ public class SnippetTitle {
         return ! title.contains("'");
     }
 
-    public SnippetTitle downgradedVersionTitle() {
+    public SnippetTitle downgradedVersion() {
         int lowerVersion = getVersionNum(title) - 1;
         Set<String> keywordsSet = createKeywordsSetWithVersionFrom(title, lowerVersion);
         return new SnippetTitle(keywordSetToString(keywordsSet));
@@ -45,7 +45,7 @@ public class SnippetTitle {
         return titleArguments.replaceAll("[^']", "").length();
     }
 
-    public SnippetTitle updateVersion() {
+    public SnippetTitle upgradeVersion() {
         return new SnippetTitle(this.toString() + " '");
     }
 

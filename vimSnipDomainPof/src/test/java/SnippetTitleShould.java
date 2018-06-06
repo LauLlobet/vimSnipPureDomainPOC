@@ -21,7 +21,7 @@ public class SnippetTitleShould {
     @Test
     public void
     distinct_same_title_with_different_versions() {
-       assertNotEquals(new SnippetTitle("A B C"),new SnippetTitle("A B C").updateVersion());
+       assertNotEquals(new SnippetTitle("A B C"),new SnippetTitle("A B C").upgradeVersion());
     }
 
     @Test
@@ -33,6 +33,6 @@ public class SnippetTitleShould {
     @Test
     public void
     be_updatable() {
-       assertThat(new SnippetTitle(" A B ' ").updateVersion().toString(),is("'' A B"));
+       assertThat(new SnippetTitle(" A B ' ").upgradeVersion().toString(),is("'' A B"));
     }
 }

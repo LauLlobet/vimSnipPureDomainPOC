@@ -40,7 +40,7 @@ public class Snippet {
     }
 
     public Snippet upgradeVersion() {
-        return new Snippet(title.updateVersion(),body);
+        return new Snippet(title.upgradeVersion(),body);
     }
 
     public boolean isVersionZero() {
@@ -48,7 +48,7 @@ public class Snippet {
     }
 
     public Snippet downgradeVersion() {
-        return new Snippet(title.downgradedVersionTitle());
+        return new Snippet(title.downgradedVersion());
     }
 
     public boolean isNotAZeroVersion() {
