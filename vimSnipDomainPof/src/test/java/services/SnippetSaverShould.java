@@ -1,8 +1,15 @@
+package services;
+
+import domain.Snippet;
+import domain.SnippetTitle;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import services.exceptions.NotCorrectVersionOfSnippetToSave;
+import services.SnippetSaver;
+import services.SnippetsProviderService;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -60,7 +67,7 @@ public class SnippetSaverShould { //TODO: naming, should it be called service? W
         verify(snippetService).save(argThat((snippet) -> { assertThat(snippet.getTitleString(),is(version2Title)); return true; }));
     }
 
-    @Test(expected=NotCorrectVersionOfSnippetToSave.class)
+    @Test(expected= NotCorrectVersionOfSnippetToSave.class)
     public void
     dont_save_a_snippet_having_its_version_ahead_of_the_lastest() {
         snippetServiceHasNotSnippetWithTitle(version2Title);

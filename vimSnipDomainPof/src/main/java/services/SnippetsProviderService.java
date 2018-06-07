@@ -1,3 +1,9 @@
+package services;
+
+
+import domain.Snippet;
+import domain.SnippetTitle;
+
 import java.util.Hashtable;
 
 public class SnippetsProviderService { //TODO: Naming for this service + is it a repository?

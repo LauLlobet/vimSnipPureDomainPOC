@@ -1,4 +1,8 @@
-import java.util.NoSuchElementException;
+package services;
+
+import domain.Snippet;
+import domain.SnippetTitle;
+import services.exceptions.NotCorrectVersionOfSnippetToSave;
 
 public class SnippetSaver {
     private SnippetsProviderService repository;

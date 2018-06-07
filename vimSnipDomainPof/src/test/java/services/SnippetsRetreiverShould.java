@@ -1,8 +1,14 @@
+package services;
+
+import domain.Snippet;
+import domain.SnippetTitle;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import services.SnippetRetriever;
+import services.SnippetsProviderService;
 
 import java.util.NoSuchElementException;
 

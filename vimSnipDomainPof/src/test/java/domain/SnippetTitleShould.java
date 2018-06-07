@@ -1,3 +1,6 @@
+package domain;
+
+import domain.Snippet;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

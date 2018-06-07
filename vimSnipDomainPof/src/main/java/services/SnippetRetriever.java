@@ -1,3 +1,8 @@
+package services;
+
+import domain.Snippet;
+import domain.SnippetTitle;
+
 import java.util.NoSuchElementException;
 
 public class SnippetRetriever {

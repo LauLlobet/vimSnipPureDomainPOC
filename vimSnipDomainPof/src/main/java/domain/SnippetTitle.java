@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +9,7 @@ public class SnippetTitle {
     private final int version;
     private String BY_SPACE = "['| ]+";
 
-    SnippetTitle(String titleString) {
+    public SnippetTitle(String titleString) {
         version = getVersionNum(titleString);
         keywords = createKeywordsSetWithVersionFrom(titleString);
     }
@@ -46,7 +48,7 @@ public class SnippetTitle {
             list.add(Integer.parseInt(m.group()));
         }
         if(list.size() > 1){
-            throw  new TwoOrMoreVersionsProvidedForSnippetCreation();
+            throw new TwoOrMoreVersionsProvidedForSnippetCreation();
         }
         if(list.size() == 0){
             return 0;
