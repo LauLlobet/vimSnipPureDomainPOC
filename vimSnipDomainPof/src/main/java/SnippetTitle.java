@@ -1,55 +1,66 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SnippetTitle {
-    private final String title;
-    private String BY_SPACE_OR_APOSTROPHE = "['| ]+";
+    private final SortedSet<String> keywords;
+    private final int version;
+    private String BY_SPACE = "['| ]+";
 
     SnippetTitle(String titleString) {
-        SortedSet<String> keywordsSet = createKeywordsSetWithVersionFrom(titleString, getVersionNum(titleString));
-        title = keywordSetToString(keywordsSet);
+        version = getVersionNum(titleString);
+        keywords = createKeywordsSetWithVersionFrom(titleString);
     }
 
-    private SortedSet<String> createKeywordsSetWithVersionFrom(String titleArguments, int versionNum) {
-        SortedSet<String> set = new TreeSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
-        set.add(createVersionKeyword(versionNum));
+    public SnippetTitle(SortedSet<String> keywords, int version) {
+        this.keywords = keywords;
+        this.version = version;
+    }
+
+    private SortedSet<String> createKeywordsSetWithVersionFrom(String titleArguments) {
+        SortedSet<String> set = new TreeSet<>(Arrays.asList(titleArguments.split(BY_SPACE)));
         set.remove("");
+        set.remove(""+version);
         return set;
     }
 
-    private String keywordSetToString(Set<String> keywords) {
-        String stringifiedTitle = new ArrayList<>(keywords).stream().reduce("", (x, y) -> x + y + " ");
-        return stringifiedTitle.substring(0, stringifiedTitle.length() - 1);
-    }
-
     public boolean isVersionZero() {
-        return ! title.contains("'");
-    }
-
-    public SnippetTitle downgradedVersion() {
-        int lowerVersion = getVersionNum(title) - 1;
-        Set<String> keywordsSet = createKeywordsSetWithVersionFrom(title, lowerVersion);
-        return new SnippetTitle(keywordSetToString(keywordsSet));
-    }
-
-    private String createVersionKeyword(int versionNum) {
-        String ans = "";
-        for(int i=0; i < versionNum; i++ ){
-            ans += "'";
-        }
-        return ans;
-    }
-
-    private int getVersionNum(String titleArguments) {
-        return titleArguments.replaceAll("[^']", "").length();
-    }
-
-    public SnippetTitle upgradeVersion() {
-        return new SnippetTitle(this.toString() + " '");
+        return version == 0;
     }
 
     @Override
-    public String toString() {
-        return title;
+    public String toString(){
+        String stringifiedTitle = new ArrayList<>(keywords).stream().reduce("", (x, y) -> x + y + " ");
+        return stringifiedTitle + version;
+    }
+
+    public SnippetTitle downgradedVersion() {
+        return new SnippetTitle(keywords, version - 1);
+    }
+
+    private int getVersionNum(String titleArguments) {
+        Pattern p = Pattern.compile("-?\\d+");
+        Matcher m = p.matcher(titleArguments);
+        ArrayList<Integer> list = new ArrayList<>();
+        while (m.find()) {
+            list.add(Integer.parseInt(m.group()));
+        }
+        if(list.size() > 1){
+            throw  new TwoOrMoreVersionsProvidedForSnippetCreation();
+        }
+        if(list.size() == 0){
+            return 0;
+        }
+        return list.get(0);
+    }
+
+    public SnippetTitle upgradeVersion() {
+        return new SnippetTitle(keywords, version + 1);
+    }
+
+
+    public boolean isNotVersion1() {
+        return version != 1;
     }
 
     @Override
@@ -57,17 +68,18 @@ public class SnippetTitle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SnippetTitle that = (SnippetTitle) o;
-        return Objects.equals(title, that.title);
+        return version == that.version &&
+                Objects.equals(keywords, that.keywords) &&
+                Objects.equals(BY_SPACE, that.BY_SPACE);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(title);
+        return Objects.hash(keywords, version, BY_SPACE);
     }
 
-
-    public boolean isNotVersion1() {
-        return getVersionNum(title) != 1;
+    public int getVersion() {
+        return version;
     }
 }
