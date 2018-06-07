@@ -14,7 +14,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class VimSnipShould {
+public class VimSnipShould { //TODO: naming, should it be called service? Will it be anemic if so? can it be a wrapper of the repo/snippetsService
 
     private VimSnip vimsnip;
 
@@ -22,8 +22,8 @@ public class VimSnipShould {
     private SnippetsProviderService snippetService;
 
     private String noVersionTitle = "title";
-    private String version1Title = "' title";
-    private String version2Title = "'' title";;
+    private String version1Title = "title 1";
+    private String version2Title = "title 2";;
 
     @Before
     public void setUp() {
