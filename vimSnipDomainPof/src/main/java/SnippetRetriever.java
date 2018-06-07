@@ -1,9 +1,9 @@
 import java.util.NoSuchElementException;
 
-public class VimSnip {
+public class SnippetRetriever {
     private SnippetsProviderService repository;
 
-    VimSnip(SnippetsProviderService snippetsProviderService) {
+    SnippetRetriever(SnippetsProviderService snippetsProviderService) {
         this.repository = snippetsProviderService;
     }
 
@@ -23,7 +23,7 @@ public class VimSnip {
     }
 
     private Snippet latestVersion(SnippetTitle zeroVersionTitle) {
-        SnippetTitle title = getMostRecentTitleStartingFrom(zeroVersionTitle);
+        SnippetTitle title = getLastestTitleStartingFrom(zeroVersionTitle);
         throwIfIsZeroVersion(title);
         return repository.get(title);
     }
@@ -34,27 +34,11 @@ public class VimSnip {
         }
     }
 
-    private SnippetTitle getMostRecentTitleStartingFrom(SnippetTitle title) {
+    private SnippetTitle getLastestTitleStartingFrom(SnippetTitle title) {
         do {
             title = title.upgradeVersion();
         } while (repository.hasSnippetWith(title));
         title = title.downgradedVersion();
         return title;
-    }
-
-    public void save(String title, String body) {
-        Snippet snippet = new Snippet(title,body);
-        checkIsCorrectVersion(snippet.getTitle());
-        repository.save(snippet);
-    }
-
-    private void checkIsCorrectVersion(SnippetTitle snippetTitle) {
-        if( repository.hasSnippetWith(snippetTitle) ||
-                snippetTitle.isVersionZero() ||
-                ( !repository.hasSnippetWith(snippetTitle.downgradedVersion()) && snippetTitle.isNotVersion1())
-                ){
-
-            throw new NotCorrectVersionOfSnippetToSave();
-        }
     }
 }

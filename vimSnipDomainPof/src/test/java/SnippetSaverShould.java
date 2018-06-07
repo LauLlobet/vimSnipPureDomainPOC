@@ -4,8 +4,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.NoSuchElementException;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -14,20 +12,20 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class VimSnipShould { //TODO: naming, should it be called service? Will it be anemic if so? can it be a wrapper of the repo/snippetsService
+public class SnippetSaverShould { //TODO: naming, should it be called service? Will it be anemic if so? can it be a wrapper of the repo/snippetsService
 
-    private VimSnip vimsnip;
+    private SnippetSaver vimsnip;
 
     @Mock
     private SnippetsProviderService snippetService;
 
-    private String noVersionTitle = "title";
     private String version1Title = "title 1";
-    private String version2Title = "title 2";;
+    private String version2Title = "title 2";
+    private String zeroVersionTitle = "title";
 
     @Before
     public void setUp() {
-        vimsnip = new VimSnip(snippetService);
+        vimsnip = new SnippetSaver(snippetService);
     }
 
     @Test
@@ -83,35 +81,16 @@ public class VimSnipShould { //TODO: naming, should it be called service? Will i
         verify(snippetService,never()).save(argThat(snippet -> snippet.getTitleString().equals(version2Title) ) );
     }
 
-    // Getting ---------------------------
-
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected=NotCorrectVersionOfSnippetToSave.class)
     public void
-    not_allow_getting_a_nonexistent_snippet() {
-        snippetServiceHasNotSnippetWithTitle(version1Title);
+    dont_save_a_zero_version_snippet() {
+        vimsnip.save(zeroVersionTitle,"a body");
 
-        vimsnip.get(version1Title);
+        verify(snippetService,never()).save(argThat(snippet -> snippet.getTitleString().equals(version2Title) ) );
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void
-    not_allow_getting_newest_version_having_no_versions_at_all() {
-        snippetServiceHasNotSnippetWithTitle(version1Title);
 
-        vimsnip.get(version1Title);
-    }
 
-    @Test
-    public void
-    provide_newest_snippet_version_if_it_is_not_specified() {
-        snippetServiceHasSnippetWithTitle(version1Title);
-        snippetServiceHasSnippetWithTitle(version2Title);
-        given(snippetService.get(new SnippetTitle(version2Title))).willReturn(new Snippet(version2Title));
-
-        Snippet retrivedSnippet = vimsnip.get(noVersionTitle);
-
-        assertThat(retrivedSnippet,is(new Snippet(version2Title)));
-    }
 
 
     private void snippetServiceHasNotSnippetWithTitle(String title2) {
