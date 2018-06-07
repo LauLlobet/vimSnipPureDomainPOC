@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class SnippetTitle {
-    private static final String ZERO_VERSION = "";
     private final String title;
     private String BY_SPACE_OR_APOSTROPHE = "['| ]+";
 
@@ -11,8 +10,7 @@ public class SnippetTitle {
     }
 
     private SortedSet<String> createKeywordsSetWithVersionFrom(String titleArguments, int versionNum) {
-        SortedSet<String> set = new TreeSet<>();
-        set.addAll(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
+        SortedSet<String> set = new TreeSet<>(Arrays.asList(titleArguments.split(BY_SPACE_OR_APOSTROPHE)));
         set.add(createVersionKeyword(versionNum));
         set.remove("");
         return set;
@@ -69,4 +67,7 @@ public class SnippetTitle {
     }
 
 
+    public boolean isNotVersion1() {
+        return getVersionNum(title) != 1;
+    }
 }

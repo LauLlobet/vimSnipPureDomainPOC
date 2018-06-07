@@ -9,11 +9,6 @@ public class Snippet {
         this.body = body;
     }
 
-    public Snippet(SnippetTitle snippetTitle, String body) {
-        title = snippetTitle;
-        this.body = body;
-    }
-
     public Snippet(SnippetTitle snippetTitle) {
         title = snippetTitle;
         body = null;
@@ -25,9 +20,6 @@ public class Snippet {
 
     public String getBody()
     {
-        if(body == null){
-            throw new DowngradedVersionSnippetUsedAsARegularSnippet();
-        }
         return body;
     }
 
@@ -37,22 +29,6 @@ public class Snippet {
 
     public String getTitleString(){
         return title.toString();
-    }
-
-    public Snippet upgradeVersion() {
-        return new Snippet(title.upgradeVersion(),body);
-    }
-
-    public boolean isVersionZero() {
-        return title.isVersionZero();
-    }
-
-    public Snippet downgradeVersion() {
-        return new Snippet(title.downgradedVersion());
-    }
-
-    public boolean isNotAZeroVersion() {
-        return !isVersionZero();
     }
 
     @Override

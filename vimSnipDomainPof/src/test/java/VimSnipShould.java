@@ -19,81 +19,107 @@ public class VimSnipShould {
     private VimSnip vimsnip;
 
     @Mock
-    private SnippetsRepository snippetRepository;
+    private SnippetsProviderService snippetService;
+
+    private String noVersionTitle = "title";
+    private String version1Title = "' title";
+    private String version2Title = "'' title";;
 
     @Before
     public void setUp() {
-        vimsnip = new VimSnip(snippetRepository);
+        vimsnip = new VimSnip(snippetService);
     }
 
     @Test
     public void
     save_a_snippet_having_its_version_as_the_latest() {
-        given(snippetRepository.has(new Snippet("' keyword3 keyword4"))).willReturn(true);
-        given(snippetRepository.has(new Snippet("keyword3 keyword4 '' "))).willReturn(false);
+        snippetServiceHasSnippetWithTitle(version1Title);
+        snippetServiceHasNotSnippetWithTitle(version2Title);
 
-        vimsnip.save("keyword3 keyword4''","a second updated body");
-        verify(snippetRepository).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
+        vimsnip.save(version2Title,"a body");
+
+        verify(snippetService).save(argThat(snippet -> { assertThat(snippet.getTitleString(),is(version2Title)); return true;}) );
     }
 
     @Test
     public void
-    save_a_first_version_snippet_which_has_not_been_stored_before() {
-        given(snippetRepository.has(new Snippet("A"))).willReturn(true);
-        given(snippetRepository.has(new Snippet("' A"))).willReturn(false);
+    save_a_first_version_of_snippet_having_no_previous_version_saved_before() {
+        snippetServiceHasNotSnippetWithTitle(version1Title);
 
-        vimsnip.save("A '","body");
+        vimsnip.save(version1Title,"a body");
 
-        verify(snippetRepository).save(argThat((snippet) -> { assertThat(snippet.getTitleString(),is("' A")); return true; }));
+        verify(snippetService).save(argThat((snippet) -> { assertThat(snippet.getTitleString(),is(version1Title)); return true; }));
+    }
+
+    @Test
+    public void
+    save_a_Nth_version_of_snippet_having_no_a_N_minus_1_version_saved_before() {
+        snippetServiceHasNotSnippetWithTitle(version2Title);
+        snippetServiceHasSnippetWithTitle(version1Title);
+
+        vimsnip.save(version2Title,"a body");
+
+        verify(snippetService).save(argThat((snippet) -> { assertThat(snippet.getTitleString(),is(version2Title)); return true; }));
     }
 
     @Test(expected=NotCorrectVersionOfSnippetToSave.class)
     public void
     dont_save_a_snippet_having_its_version_ahead_of_the_lastest() {
-        given(snippetRepository.has(new Snippet("keyword1 keyword2 '' "))).willReturn(false);
-        given(snippetRepository.has(new Snippet("keyword1 keyword2 ' "))).willReturn(false);
+        snippetServiceHasNotSnippetWithTitle(version2Title);
+        snippetServiceHasNotSnippetWithTitle(version1Title);
 
-        vimsnip.save("keyword1 keyword2'' ","a second updated body");
+        vimsnip.save(version2Title,"a body");
 
-        verify(snippetRepository,never()).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
+        verify(snippetService,never()).save(argThat(snippet -> { assertThat(snippet.getTitleString(),is(version2Title)); return true; }) );
     }
 
     @Test(expected=NotCorrectVersionOfSnippetToSave.class)
     public void
     dont_save_a_snippet_that_already_exists() {
-        given(snippetRepository.has(new Snippet("keyword1 keyword2 '' "))).willReturn(true);
+        snippetServiceHasSnippetWithTitle(version2Title);
 
-        vimsnip.save("keyword1 keyword2'' ","a second updated body");
+        vimsnip.save(version2Title,"a body");
 
-        verify(snippetRepository,never()).save(argThat(snippet -> snippet.getTitleString().equals( "'' keyword3 keyword4") ) );
+        verify(snippetService,never()).save(argThat(snippet -> snippet.getTitleString().equals(version2Title) ) );
     }
+
+    // Getting ---------------------------
 
     @Test(expected = NoSuchElementException.class)
     public void
     not_allow_getting_a_nonexistent_snippet() {
-        given(snippetRepository.hasSnippetWith(new SnippetTitle("A' "))).willReturn(false);
+        snippetServiceHasNotSnippetWithTitle(version1Title);
 
-        vimsnip.get("A' ");
+        vimsnip.get(version1Title);
     }
 
     @Test(expected = NoSuchElementException.class)
     public void
-    not_allow_retreive_newest_version_having_no_versions_at_all() {
-        given(snippetRepository.hasSnippetWith(new SnippetTitle("A' "))).willReturn(false);
+    not_allow_getting_newest_version_having_no_versions_at_all() {
+        snippetServiceHasNotSnippetWithTitle(version1Title);
 
-        vimsnip.get("A ");
+        vimsnip.get(version1Title);
     }
 
     @Test
     public void
     provide_newest_snippet_version_if_it_is_not_specified() {
-        given(snippetRepository.hasSnippetWith(new SnippetTitle("A'"))).willReturn(true);
-        given(snippetRepository.hasSnippetWith(new SnippetTitle("A''"))).willReturn(true);
-        given(snippetRepository.get(new SnippetTitle("A''"))).willReturn(new Snippet("A ''"));
+        snippetServiceHasSnippetWithTitle(version1Title);
+        snippetServiceHasSnippetWithTitle(version2Title);
+        given(snippetService.get(new SnippetTitle(version2Title))).willReturn(new Snippet(version2Title));
 
-        Snippet retrivedSnippet = vimsnip.get("A");
+        Snippet retrivedSnippet = vimsnip.get(noVersionTitle);
 
-        assertThat(retrivedSnippet,is(new Snippet("A '' ")));
+        assertThat(retrivedSnippet,is(new Snippet(version2Title)));
+    }
+
+
+    private void snippetServiceHasNotSnippetWithTitle(String title2) {
+        given(snippetService.hasSnippetWith(new SnippetTitle(title2))).willReturn(false);
+    }
+
+    private void snippetServiceHasSnippetWithTitle(String title1) {
+        given(snippetService.hasSnippetWith(new SnippetTitle(title1))).willReturn(true);
     }
 }
 
