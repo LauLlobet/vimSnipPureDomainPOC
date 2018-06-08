@@ -84,4 +84,8 @@ public class SnippetTitle {
     public int getVersion() {
         return version;
     }
+
+    public boolean isSonOf(SnippetTitle possibleParent) {
+        return this.keywords.containsAll(possibleParent.keywords);
+    }
 }
