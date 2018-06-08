@@ -34,15 +34,15 @@ public class NavigationByMostExtendedTitlesServiceShould {
     private SnippetTitle a_c        = new SnippetTitle("a c");
     private SnippetTitle a_c_b      = new SnippetTitle("a c b");
 
-      private SnippetTitle a_b_1    = new SnippetTitle("a b 1");
- //   private SnippetTitle a_c_b_2    = new SnippetTitle("a c b 2");
- //   private SnippetTitle a_c_b_3    = new SnippetTitle("a c b 3");
+    private SnippetTitle a_b_1    = new SnippetTitle("a b 1");
 
-        private SnippetTitle a_b_h_1 = new SnippetTitle("a b h 1");
+       private SnippetTitle a_b_h_1 = new SnippetTitle("a b h 1");
+
+    private SnippetTitle a_d = new SnippetTitle("a d");
 
       private SnippetTitle a_d_1    = new SnippetTitle("a d 1");
-//    private SnippetTitle a_c_d_2    = new SnippetTitle("a c d 2");
-//    private SnippetTitle a_c_d_3    = new SnippetTitle("a c d 3");
+      private SnippetTitle a_d_2    = new SnippetTitle("a d 2");
+      private SnippetTitle a_d_3    = new SnippetTitle("a d 3");
 
         private SnippetTitle a_d_e_1 = new SnippetTitle("a d e 1");
         private SnippetTitle a_d_f_1 = new SnippetTitle("a d f 1");
@@ -65,8 +65,8 @@ public class NavigationByMostExtendedTitlesServiceShould {
 
     @Test
     public void
-    return_titles_ordered_by_the_most_extended_subset_first() {
-        subSetsService(a_c_b, setOf(a_b_1,
+    provide_titles_having_the_most_extended_subset_first() {
+        subSetsServiceProvidesFor(a_c_b, setOf(a_b_1,
                                     a_b_h_1,
                                     a_d_1,
                                     a_d_e_1,
@@ -76,12 +76,20 @@ public class NavigationByMostExtendedTitlesServiceShould {
         assertThat(navigator.get(a_c_b), contains(a_d_1, a_b_1, a_d_f_1, a_b_h_1, a_d_e_1, a_d_f_g_1));
     }
 
+    @Test
+    public void
+    provide_titles_having_the_same_set_of_keywords_orederd_by_version_num() {
+        subSetsServiceProvidesFor(a_d, setOf(a_d_2,a_d_1,a_d_3));
+
+       assertThat(navigator.get(a_d),contains(a_d_1,a_d_2,a_d_3));
+    }
+
 
     private List<SnippetTitle> setOf(SnippetTitle... titles) {
         return Arrays.asList(titles);
     }
 
-    private void subSetsService(SnippetTitle snippetTitle, List<SnippetTitle> listOfTitles) {
+    private void subSetsServiceProvidesFor(SnippetTitle snippetTitle, List<SnippetTitle> listOfTitles) {
         given(subSetsService.subsetsOf(snippetTitle)).willReturn(new HashSet<>(listOfTitles));
     }
 
